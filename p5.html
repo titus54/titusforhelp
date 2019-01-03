@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" type="image/png" href="icon.png"/>
+<title>Project 5</title>
+<style type="text/css">
+ body
+{
+	background-image:url(p5b.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+}
+	.heading{
+		margin: 0 auto 0 auto;
+		text-align: center;
+		background: white;
+		width: 20%;
+		padding: 10px;
+		font-family: calibri;
+		border-radius: 10px;
+
+	}
+	.content {
+		background: white;
+		width: 85%;
+		padding: 70px ;
+		margin: 100px auto;
+		font-family: calibri;
+		border-radius: 10px;
+	}
+	h1{
+		font-size: 40px;
+		color: black;
+	}
+	h2,h3,h4,h5,h6,h7,h8{
+		font-size: 35px;
+		color:black;
+	}
+
+	ul{
+		font-size:  25px;
+
+	}
+	ol{
+		font-size:  25px;
+	}
+	p{
+		font-size: 25px;
+		color: black;
+
+	}
+</style>
+</head>
+
+<body>
+					<a href="index.html">
+<img src="naviii.png" height="50" width="50">
+</a>
+	<a href="project.html">
+<img src="closee.png" style="float:right; height="50" width="50">
+</a>
+	<div class="heading">
+		<h1> Flame Sensor </h1>
+</div>
+	
+	<div class="content">
+		
+		<p>Quick and simple start guide for using and exploring the Flame Sensor module with an Arduino.</p>
+		<h2>Parts Needed</h2>
+		<ul>
+			<li>(1) Flame Sensor (model with an analog out)</li>
+			<li>Male to Female jumper wires</li>
+			<li>(1)An Arduino</li>
+			<li>(1) Lighter or another flame source for testing.</li>
+			</ul>
+		<h2>Getting to Know Your Flame Sensor:</h2>
+		<img src="p5.jpg">
+		<h3>Usage:</h3>
+		<p>These types of sensors are used for short range fire detection and can be used to monitor projects or as a safety precaution to cut devices off / on.</p>
+		<h4>Range:</h4>
+		<p>I have found this unit is mostly accurate up to about 3 feet.</p>
+		<h5>How it works:</h5>
+		<p>The flame sensor is very sensitive to IR wavelength at 760 nm ~ 1100 nm light.
+
+Analog output (A0): Real-time output voltage signal on the thermal resistance.
+
+Digital output (D0): When the temperature reaches a certain threshold, the output high and low signal threshold adjustable via potentiometer.</p>
+<h6>Pins:</h6>
+		<ul>
+			<li>VCC...... Positive voltage input: 5v for analog 3.3v for Digital.</li>
+			<li>A0.......... Analog output</li>
+			<li>D0......... Digital output</li>
+			<li>GND..... Ground</li>
+		</ul>
+		<h7>Flame sensor ............... Arduino</h7>
+		<ul>
+			<li>VCC............................... 5v</li>
+			<li>GND...............................GND</li>
+			<li>A0.................................. Analog in 0</li>
+		</ul>
+		<img src="p5a.jpg">
+		<p> This code is constantly updating in order to provide a real time feedback of the flame sensor.</p>
+	<a class="thumb-wrapper" href="https://cdn.instructables.com/ORIG/F1I/7MZL/HZ88NFJJ/F1I7MZLHZ88NFJJ.ino" download="Flame_Sensor_Example_Reichenstein7.ino" title="Flame_Sensor_Example_Reichenstein7.ino">
+	<h8>The Code</h8>
+	</div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" type="image/png" href="icon.png"/>
+
+<title>Project 21</title>
+<style type="text/css">
+ body
+{
+	background-image:url(p21b.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+}
+	.heading{
+		margin: 0 auto 0 auto;
+		text-align: center;
+		background: white;
+		width: 50%;
+		padding: 10px;
+		font-family: calibri;
+		border-radius: 10px;
+
+	}
+	.content {
+		background: white;
+		width: 85%;
+		padding: 70px ;
+		margin: 100px auto;
+		font-family: calibri;
+		border-radius: 10px;
+	}
+	h1{
+		font-size: 40px;
+		color: black;
+	}
+	h2,h3,h4,h5{
+		font-size: 35px;
+		color:black;
+	}
+	ul{
+		font-size:  25px;
+
+	}
+	ol{
+		font-size:  25px;
+	}
+	p{
+		font-size: 25px;
+		color: black;
+
+	}
+	pre{
+		font-size: 20px;
+
+	}
+</style>
+</head>
+
+<body>
+					<a href="index.html">
+<img src="naviii.png" height="50" width="50">
+</a>
+	<a href="project.html">
+<img src="close.png" style="float:right; height="30" width="30">
+</a>
+	<div class="heading">
+		<h1> Arduino Stepper Motor Project </h1>
+</div>
+	
+	<div class="content">
+		
+		<p>Servos are cool but you can only move them from 0 to 180 degrees, what if you want to have precise continuous rotation? Stepper motor is the answer.
+
+A stepper motor is a very precise motor that you can instruct to rotate one step at a time. They are used in CNC machines, 3D printers and in robotics.
+
+The big ones can be really expensive. In this tutorial, we are going to use a super cheap stepper motor with a stepper driver. You can find them online for as cheap as $2 (motor + driver).
+
+The 28byj-48 is the one stepper we will work with and you can find lots of projects that use this motor just by googling it’s name. Thanks to its driver it’s super easy to connect it to the Arduino Uno board.</p>
+<h2>What we need:</h2>
+<ul>
+	<li>1 x Arduino Uno board</li>
+	<li>1 x 28byj-48 stepper motor with driver</li>
+	<li>Jumper wires</li>
+
+
+</ul>
+<p>You will need 6 cables with female-male connectors, 4 of them from the Arduino digital pins to the stepper driver and 2 of them from the Arduino power pins to the stepper driver power pins.
+
+You can simply connect the motor to the driver with its connectors. Here is an image that shows what is found on the stepper driver.</p>
+<img src="p21a.png">
+<p>Here is how you should connect the whole.</p>
+<img src="p21.png">
+<p>Last but not least the Arduino program.
+
+It uses a the SWITCH CASE command to shorten the its length.
+
+</p>
+<h3>Arduino stepper motor code</h3>
+<pre class="brush: cpp; title: ; notranslate" title="">
+//we need this value to know which coil should be turned on in stepper motor
+int step_count;
+void setup() {
+  //seting up pins as outputs for motor driver
+  pinMode(2, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+
+}
+void loop() {
+  //using switch and based on step_count we can perform each motor step
+  //as you can see we are shifting high state every step
+  switch(step_count){
+    case 0:
+     digitalWrite(2, HIGH);
+     digitalWrite(3, LOW);
+     digitalWrite(4, LOW);
+     digitalWrite(5, LOW);
+    break;
+
+    case 1:
+     digitalWrite(2, LOW);
+     digitalWrite(3, HIGH);
+     digitalWrite(4, LOW);
+     digitalWrite(5, LOW);
+    break;
+
+    case 2:
+     digitalWrite(2, LOW);
+     digitalWrite(3, LOW);
+     digitalWrite(4, HIGH);
+     digitalWrite(5, LOW);
+    break;
+
+    case 3:
+     digitalWrite(2, LOW);
+     digitalWrite(3, LOW);
+     digitalWrite(4, LOW);
+     digitalWrite(5, HIGH);
+    break;
+  }
+  //incrementing step_count value
+  step_count++;
+  //if it is bigger than should set it to 0
+  if(step_count &gt; 3){
+    step_count = 0;
+  }
+  //change the delay to change the speed for this motor 0.002 second is the smallest possible
+  delay(3);
+
+}
+</pre>
+<p>I figured I should add a piece of tape on the rotating head of the motor to be able to easily see what is happening.</p>

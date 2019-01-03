@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" type="image/png" href="icon.png"/>
+
+<title>Project 19</title>
+<style type="text/css">
+ body
+{
+	background-image:url(p19b.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+}
+	.heading{
+		margin: 0 auto 0 auto;
+		text-align: center;
+		background: white;
+		width: 50%;
+		padding: 10px;
+		font-family: calibri;
+		border-radius: 10px;
+
+	}
+	.content {
+		background: white;
+		width: 85%;
+		padding: 70px ;
+		margin: 100px auto;
+		font-family: calibri;
+		border-radius: 10px;
+	}
+	h1{
+		font-size: 40px;
+		color: black;
+	}
+	h2,h3,h4,h5{
+		font-size: 35px;
+		color:black;
+	}
+	ul{
+		font-size:  25px;
+
+	}
+	ol{
+		font-size:  25px;
+	}
+	p{
+		font-size: 25px;
+		color: black;
+
+	}
+	pre{
+		font-size: 20px;
+
+	}
+</style>
+</head>
+
+<body>
+					<a href="index.html">
+<img src="navicon.png" height="50" width="50">
+</a>
+	<a href="project.html">
+<img src="closee.png" style="float:right; height="50" width="50">
+</a>
+	<div class="heading">
+		<h1> Arduino Projects: Rainfall Detector </h1>
+</div>
+	
+	<div class="content">
+		
+		<p>I usually put my laundry outside on the balcony and I built this Arduino rainfall detector to let me know when rain starts.
+
+A nice project for beginners, Let’s see how you can built a simple rain detector using the rain sensor and a buzzer. The detector will start a beep to let you know the rain has started.<br>
+Here is the list of the part needed for this project:</p>
+<ul>
+	<li>1 x Arduino Uno board</li>
+	<li>1 x Rain sensor</li>
+	<li>1 x Buzzer</li>
+	<li>Jumper wires
+</li>
+
+
+</ul>
+<p>The rain sensor is just a PCB board with opens traces when a drop of water close the circuit on the board, a special circuitry gives a LOW signal to the digital output pin. It has an analog output pin as well which you can use to read analog values from the sensor.
+
+With the potentiometer on board, you can control the threshold for digital outputs. A red LED signals that rain is detected, you can see it by touching the sensor with a hand (sometimes you have to squeeze it a little to see the light, because the skin resistance is quite big).<br>
+
+Here is the schematic. Note that it does not matter how you connect the the rain sensor driver (this blue PCB with a potentiometer) to the sensing board (the black one with silver traces).
+
+</p>
+<img src="p19.png">
+<p>The connected project looks somewhat like the picture below.<br>
+	Now, we can upload a code. A short and simple code.
+
+I will suggest you play with the code, try changing the time delay, add some melody instead of beeps or try to add an LED instead of a buzzer.
+
+
+</p>
+<h2>The Code</h2>
+<pre class="brush: cpp; title: ; notranslate" title="">
+
+void setup() {
+//on pin12 we have the rain sensor so this is an input
+pinMode(12, INPUT);
+//on pin 13 we have buzzer so this is an output
+pinMode(13, OUTPUT);
+}
+
+void loop() {
+//when rain sensor gives LOW signal it means that it rains
+if(digitalRead(12) == LOW){
+//for half a second we turn the buzzer on
+digitalWrite(13, HIGH);
+delay(500);
+//for half a second we turn the buzzer off
+digitalWrite(13, LOW);
+delay(500);
+//so we have the beep-beep signal like an alarm
+}
+
+}
+</pre>
+<p>To make it useful, you should put the sensing board outside the window and leave other parts inside the house to protect them from the rain.
+
+Whenever there will be a rain, you will be notified by the buzzer.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" type="image/png" href="icon.png"/>
+
+<title>Project 20</title>
+<style type="text/css">
+ body
+{
+	background-image:url(p20b.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+}
+	.heading{
+		margin: 0 auto 0 auto;
+		text-align: center;
+		background: white;
+		width: 50%;
+		padding: 10px;
+		font-family: calibri;
+		border-radius: 10px;
+
+	}
+	.content {
+		background: white;
+		width: 85%;
+		padding: 70px ;
+		margin: 100px auto;
+		font-family: calibri;
+		border-radius: 10px;
+	}
+	h1{
+		font-size: 40px;
+		color: black;
+	}
+	h2,h3,h4,h5{
+		font-size: 35px;
+		color:black;
+	}
+	ul{
+		font-size:  25px;
+
+	}
+	ol{
+		font-size:  25px;
+	}
+	p{
+		font-size: 25px;
+		color: black;
+
+	}
+	pre{
+		font-size: 20px;
+
+	}
+</style>
+</head>
+
+<body>
+					<a href="index.html">
+<img src="naviii.png" height="50" width="50">
+</a>
+	<a href="project.html">
+<img src="close.png" style="float:right; height="50" width="50">
+</a>
+	<div class="heading">
+		<h1> Arduino Stopwatch Project </h1>
+</div>
+	
+	<div class="content">
+		
+		<p>Here is a project that will help you build your own Arduino stopwatch using the Arduino Board and few other components. After working on this basic Arduino countdown timer, a user suggested adding few more functionality to it, which is why we are coming back with this other timer with a short list of additions: You can set the time without having to change the code and it actually let you know when it reaches zero.<br>
+		Here is what we need:</p>
+		<ul>
+			<li>1 x Arduino Uno board</li>
+			<li>1 x LCD with I2C converter</li>
+			<li>1 x Buzzer</li>
+			<li>1 x Potentiometer</li>
+			<li>Jumper wires</li>
+			<li>1 x Breadboard</li>
+		</ul>
+		<h2>Here is schematic:</h2>
+		<img src="p20.png">
+		<p>When you are done with the connections, you can upload the following program into the board.</p>
+		<h3>The Code</h3>
+		<pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;Wire.h&gt;
+#include &lt;LiquidCrystal_I2C.h&gt;
+
+LiquidCrystal_I2C lcd(0x27,20,4);
+//this values will help us to choose the time
+long last_change;
+long last_value;
+long timer_value;
+void setup()
+{
+//inti lcd
+lcd.init();
+//turn on backlight
+lcd.backlight();
+pinMode(A0, INPUT);
+pinMode(8, OUTPUT);
+}
+
+void loop()
+{
+//if the value was changed less than 5 seconds ago this loop will work
+while(millis() - last_change &lt; 5000){
+timer_value = map(analogRead(A0), 0, 1023, 1, 120);
+if(timer_value != last_value){
+lcd.clear();
+lcd.setCursor(0,0);
+lcd.print("Timer");
+lcd.setCursor(0,1);
+lcd.print(timer_value);
+last_value = timer_value;
+last_change = millis();
+}
+delay(10);
+}
+//after 5 seconds this will happen
+lcd.clear();
+lcd.print("starting...");
+delay(3000);
+long target = last_change + (timer_value * 60 * 1000);
+//and then it will start displaying how much time there is until end of counting
+while(millis() &lt; target){
+lcd.clear();
+lcd.setCursor(0,0);
+lcd.print("Time left:");
+lcd.setCursor(0, 1);
+lcd.print((target - millis()) / 1000 / 60);
+delay(50);
+}
+//and few beeps at the end
+for(int a = 0; a &lt; 10; a++){
+digitalWrite(8, HIGH);
+delay(500);
+digitalWrite(8, LOW);
+delay(500);
+}
+while(1);
+}
+</pre>
+<p>This is what the user can do: Set the time between 1 and 120 minutes. After specifying the time, it waits for 5 seconds and starts counting down. When the time is up, it beeps few times.
+</p>
+</div>
+</body>
+</html>
