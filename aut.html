@@ -1,65 +1,96 @@
 <!DOCTYPE html>
 <html>
-<head>
+<title>About</title>
 <link rel="icon" type="image/png" href="icon.png"/>
-<title>Project 1</title>
-<style type="text/css">
- body
-{
-	background-image:url(autb.jpg);
-	background-size: cover;
-	background-attachment: fixed;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+<style>
+body {font-family: "Raleway", Arial, sans-serif}
+
+
+.w3-row img {
+             display: block;
+             border-radius: 50%;
+              margin-left: auto;
+  margin-right: auto;
+
+             
+
+
+}
+img{
+  border-radius: 40%;
+}
+h4{
+  font-family: mistral;
+  color: black;
+  font-size: 40px;
+}
+p{
+font-family: Brush Script Std;
+  color: black;
+  font-size: 35px;
 }
 
-	.content {
-		background: white;
-		width: 85%;
-		padding: 70px ;
-		margin: 100px auto;
-		font-family: calibri;
-		border-radius: 10px;
-	}
-	h3{
-		font-size: 40px;
-		color: black;
-		font-family: mistral;
-	}
-	h2{
-		font-size: 50px;
-		color:black;
-		font-family: mistral;
-		text-align: center;
-	}
-	ul{
-		font-size:  25px;
 
-	}
-	ol{
-		font-size:  25px;
-	}
-	p{
-		font-size: 40px;
-		color: black;
-		font-family: Brush Script Std;
-
-	}
-	img{
-		border-radius: 50%;
-
-	}
+}
 </style>
-</head>
-
 <body>
-		<a href="index.html">
-<img src="naviii.png" height="50" width="50">
-</a>
 
-	
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1500px">
+
+  <!-- Header -->
+  <header class="w3-container w3-xlarge w3-padding-24">
+    <a href="index.html" class="w3-left w3-button w3-white">Home</a>
+    <a href="#about" class="w3-right w3-button w3-white">About</a>
+    <a href="#" class="w3-block w3-button w3-white">My Interest</a>
+  </header>
+
+  <!-- Photo Grid -->
+  <div class="w3-row">
+    <img src="m1.jpg" style="width:100% " >
+    <div class="w3-half">
+      
+          </div>
+
+    <div class="w3-half">
+      
+
+    </div>
+  </div>
+  
+<!-- End Page Content -->
 </div>
-	
-	<div class="content">
-		<h2>About </h2>
-<img src="aut.jpg" width="500" height="500">
-<h3>D.Titus Pinto</h3>
-<p> I developed this Web Page with a intention, that this might help for the people who are starting the beginning level of Arduino projects.it's very easy to follow the instuctions,and you can download the code as it is embeded in each of the project page.   </p>
+
+<!-- Footer / About Section -->
+<footer class="w3-light-grey w3-padding-64 w3-center" id="about">
+  <h2>About</h2>
+
+  <img src="aut.jpg" class="w3-image w3-padding-32" width="300" height="300">
+    <h4>D.Titus Pinto</h4>
+  <form style="margin:auto;width:60%" action="/action_page.php" target="_blank">
+    <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of teaching people. I want to share basics of arduino projects, That's why i made this page and i hope it might help you.  </p>
+    <p class="w3-large w3-text-pink">Do not hesitate to contact me!</p>
+    <div class="w3-section">
+      <label><b>Name</b></label>
+      <input class="w3-input w3-border" type="text" required name="Name">
+    </div>
+    <div class="w3-section">
+      <label><b>Email</b></label>
+      <input class="w3-input w3-border" type="text" required name="Email">
+    </div>
+    <div class="w3-section">
+      <label><b>Message</b></label>
+      <input class="w3-input w3-border" required name="Message">
+    </div>
+    <button type="submit" class="w3-button w3-block w3-dark-grey">Send</button>
+  </form>
+  <br>
+  <p>Developed by <a href=#about>Titus</a></p>
+</footer>
+ 
+</body>
+</html>
